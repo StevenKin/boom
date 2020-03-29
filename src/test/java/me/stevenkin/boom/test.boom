@@ -1,0 +1,16 @@
+a = 1;
+b = true;
+str = "hello boom\n";
+// this is test
+if (a > 0) {
+
+} elif (b) {
+
+} elif (str == null) {
+
+} else {
+
+}
+while (a < 10 && b) {
+
+}
