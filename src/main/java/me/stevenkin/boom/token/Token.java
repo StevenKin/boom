@@ -1,26 +1,40 @@
 package me.stevenkin.boom.token;
 
-public abstract class Token {
-    public static final Token END = new Token(-1) {
+public class Token {
+    public static final Token END = new Token(null, -1, Type.BLANK) {
         @Override
-        public Object getData() {
+        public String getOrigin() {
             throw new RuntimeException();
         }
     };
-
     private int lineNum;
+    private String origin;
+    private Type type;
 
-    public Token(int lineNum) {
+    public Token(String origin, int lineNum, Type type) {
+        this.origin = origin;
         this.lineNum = lineNum;
+        this.type = type;
     }
 
-    public abstract Object getData();
+    public String getOrigin() {
+        return origin;
+    }
 
     public int getLineNum() {
         return lineNum;
     }
 
-    public void setLineNum(int lineNum) {
-        this.lineNum = lineNum;
+    enum Type {
+        BLANK,
+        OP,
+        COMMA,
+        POINT,
+        SEMICOLON,
+        BRACKETS,
+        STRING,
+        CHAR,
+        NUMBER,
+        IDENTIFIER
     }
 }
